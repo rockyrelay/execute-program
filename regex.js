@@ -54,3 +54,21 @@ var re = /^t.*t$/;
 
 // ^ notes must start with t, . notes additional character
 // * notes 0 or more of this character, $ notes must end in t
+
+/////
+
+// Or
+/*
+A | between two regexes matches either of those two regexes.
+*/
+/a|b/.test("a"); // true
+/a|b/.test("b"); // true
+/at|co/.test("horse"); // false
+
+/////
+
+// QUIZ
+/*
+Write a regex to recognize strings that contain "cat", "dog", or "horse".
+*/
+var re = /cat|dog|horse/;
