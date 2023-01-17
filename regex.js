@@ -72,3 +72,47 @@ A | between two regexes matches either of those two regexes.
 Write a regex to recognize strings that contain "cat", "dog", or "horse".
 */
 var re = /cat|dog|horse/;
+
+/////
+
+// Basic Character Classes
+/*
+Character classes give us short names for common groups of characters.
+*/
+// \s matches any whitespace character.
+/\s/.test(' ');
+RESULT:
+true
+>
+// \d matches digits.
+/\d/.test('1');
+RESULT:
+true
+All character classes can be negated by upper-casing them.
+
+>
+// \D matches non-digit characters.
+/\D/.test('a');
+RESULT:
+true
+
+// QUIZ
+/*
+Write a regex that recognizes any five consecutive digits anywhere in the text.
+*/
+var re = 
+
+/////
+
+// Parens
+/*
+Parentheses group operators together.
+*/
+// Matches a, b, ab, ba, ...
+/^(a|b)+$/;
+
+// QUIZ
+/*
+Write a regex that matches the word "cat", or the empty string. It shouldn't match any strings other than those two.
+*/
+var re = /^(cat|)$/;
