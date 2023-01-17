@@ -116,3 +116,9 @@ Parentheses group operators together.
 Write a regex that matches the word "cat", or the empty string. It shouldn't match any strings other than those two.
 */
 var re = /^(cat|)$/;
+
+//QUIZ
+/*
+Write a regex that recognizes dogs and cats that are only big or fluffy, but not both.
+*/
+var re = /^(big|fluffy) (dog|cat)$/;
