@@ -58,3 +58,12 @@ QL keywords like INSERT and SELECT ignore case
 
 SQL keywords in UPPERCASE, like CREATE and INSERT. Our tables and columns will be lower_snake_case, like user_name. This is a common convention that makes it easier to see what's a SQL keyword and what isn't. When defining JavaScript functions and variables, we'll use lowerCamelCase, which is that community's convention.
  */
+
+ /*CREATE a cats table with a TEXT name column, then INSERT the cat "Keanu" into the table, then SELECT Keanu back out. Because you're writing multiple statements, you'll have to type out three exec()s.*/
+
+exec(`CREATE TABLE cats (name TEXT)`);
+exec(`INSERT into cats (name) VALUES ('Keanu')`);
+exec(`SELECT * FROM cats`);
+
+/* returns */
+[{name: 'Keanu'}]
