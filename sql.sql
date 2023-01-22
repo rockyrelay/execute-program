@@ -108,3 +108,21 @@ exec(`INSERT INTO rectangles (width, height) VALUES ('oh', 'no')`);
 exec(`SELECT * FROM rectangles`);
 /*returns*/
 [{width: 'oh', height: 'no'}]
+
+/* SQLite: Everything inserted into a TEXT column is converted into a string. For example, inserting 3 will become '3'*/
+
+/*In the example below, we mix up the name and age fields: we insert the name as the age, and the age as the name. Unfortunately, SQLite allows it. */
+
+exec(`CREATE TABLE cats (name TEXT, age INTEGER)`);
+exec(`INSERT INTO cats (name, age) VALUES (7, 'Catsup')`);
+exec(`SELECT * FROM cats`);
+/*result*/
+[{name: '7', age: 'Catsup'}]
+
+/* Here's a postgresQL with the same - pulls an error 
+> CREATE TABLE cats (name TEXT, age INTEGER);
+CREATE TABLE
+> INSERT INTO cats (name, age) VALUES (7, 'Catsup');
+ERROR:  invalid input syntax for integer: "Catsup"
+LINE 1: INSERT INTO cats (name, age) VALUES (7, 'Catsup');
+*/
