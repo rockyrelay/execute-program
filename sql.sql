@@ -67,3 +67,44 @@ exec(`SELECT * FROM cats`);
 
 /* returns */
 [{name: 'Keanu'}]
+
+/*
+INTEGER is what it sounds like: whole numbers, which can be positive or negative. REAL is a real number like 5.17, 0.00002, or 11, stored as an IEEE double precision floating point number. (This is the same data type as the number type in JavaScript.)
+
+When we query an INTEGER or REAL column, the values come back to us as JavaScript numbers. For example, in the query below, the age comes back as 3, not '3'.
+*/
+
+exec(`CREATE TABLE cats (name TEXT, age INTEGER)`);
+exec(`INSERT INTO cats (name, age) VALUES ('Ms. Fluff', 3)`);
+exec(`SELECT * FROM cats`);
+/*returns*/
+[{name: 'Ms. Fluff', age: 3}]
+
+exec(`CREATE TABLE rectangles (width REAL, height REAL)`);
+exec(`INSERT INTO rectangles (width, height) VALUES (1.7, 2.1)`);
+const queryResults = exec(`SELECT * FROM rectangles`);
+​
+/* This query examines the database's schema directly. That lets us
+ * verify that the column is actually a `REAL`.
+ * This wouldn't be necessary in most SQL databases, which we'll
+ * discuss in a future lesson. You don't need to understand this code
+ * if you're not interested! */
+const columnTypes = exec(`PRAGMA table_info(rectangles)`).map(
+  ({type}) => type.toUpperCase()
+);
+​
+[queryResults, columnTypes];
+
+[[{width: 1.7, height: 2.1}], ['REAL', 'REAL']]
+
+/*
+One of SQLite's most notable differences is that it doesn't enforce column types. It will happily let us insert an integer into a TEXT column, or insert a string into a REAL column.
+
+It should insert a rectangle with a width of 'oh' and a height of 'no'. Many SQL databases won't allow this, but SQLite will.
+*/
+
+exec(`CREATE TABLE rectangles (width REAL, height REAL)`);
+exec(`INSERT INTO rectangles (width, height) VALUES ('oh', 'no')`);
+exec(`SELECT * FROM rectangles`);
+/*returns*/
+[{width: 'oh', height: 'no'}]
