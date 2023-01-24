@@ -144,3 +144,50 @@ In regexes, + normally repeats whatever comes before it. But we can escape the +
 Write a regular expression to match US dollar amounts. The amounts always have two cents included, like $9.52.
 */
 var re = /^\$\d+\.\d\d$/;
+
+
+////////////////////
+
+// MAYBE
+
+/*
+The ? operator matches a character 0 or 1 times, but not more than 1. 
+
+? affects whatever is immediately before it. 
+
+in /ab?/ it only affects b.
+
+to include more, use parentheses to apply to group.
+*/
+
+// QUIZ
+/*
+Write a regex to match only 'cat' or 'cats'. If there's anything more or less than that, the regex shouldn't match.
+*/
+
+var re = /^cats?$/;
+
+// QUIZ
+/*
+A local number looks like 555-1234. A long-distance number adds an area code, like 206-555-1234. Write a regex that can recognize both types.
+*/
+
+var re = /^\d\d\d-(\d\d\d-)?\d\d\d\d$/;
+
+
+////////////////////
+
+
+// HEX CODES
+
+/*
+Computers internally store text as numbers. As a shorthand, we usually write those numbers out as hexadecimal codes.
+
+The x isn't a hex digit; it's telling us that this is a hex code.
+
+the syntax \x can only be followed by exactly two digits. Anything after the two digits will be a different part of the regex.
+
+If we write an \x with only one digit, it's no longer a character code. Instead, the \x matches literal "x" characters.
+
+Hexadecimal digits can be any character from 0-9, a-f, or A-F. If we use the wrong characters, the \x will match literal "x" again.
+*/
