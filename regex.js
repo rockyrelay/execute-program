@@ -88,7 +88,7 @@ true
 /\d/.test('1');
 RESULT:
 true
-All character classes can be negated by upper-casing them.
+// All character classes can be negated by upper-casing them.
 
 >
 // \D matches non-digit characters.
@@ -100,7 +100,7 @@ true
 /*
 Write a regex that recognizes any five consecutive digits anywhere in the text.
 */
-var re = 
+var re = /\d\d\d\d\d/;
 
 /////
 
@@ -117,8 +117,30 @@ Write a regex that matches the word "cat", or the empty string. It shouldn't mat
 */
 var re = /^(cat|)$/;
 
-//QUIZ
+// QUIZ
 /*
 Write a regex that recognizes dogs and cats that are only big or fluffy, but not both.
 */
 var re = /^(big|fluffy) (dog|cat)$/;
+
+// QUIZ
+/*
+Define a regular expression that recognizes American local phone numbers. (They have three numbers before the dash and four after it.)
+*/
+var re = /^\d\d\d-\d\d\d\d$/;
+
+/////////////////////
+
+// ESCAPING
+
+/*
+In regexes, + normally repeats whatever comes before it. But we can escape the + as \+ to match a literal "+". Likewise for other operators.
+*/
+
+/.\+./.test('1+1'); // true
+
+// QUIZ
+/*
+Write a regular expression to match US dollar amounts. The amounts always have two cents included, like $9.52.
+*/
+var re = /^\$\d+\.\d\d$/;
