@@ -163,3 +163,57 @@ NOT NULL
 -- it's best to make column NOT NULL unless there is a good reason to. 
 -- making columns explicitly NULL helps when reading your schema later on by being intentional
 
+
+-----------------------
+
+-- Selecting Columns
+
+-- Instead of using SELECT *, we can SELECT columns by name to be more specific
+
+-- SELECT ALL (*)
+(`CREATE TABLE users (name TEXT, login_count INTEGER)`);
+(`INSERT INTO users (name, login_count) VALUES ('Amir', 1)`);
+(`SELECT * FROM users`);
+-- [{name: 'Amir', login_count: 1}]
+
+-- SELECT specific
+(`CREATE TABLE users (name TEXT, login_count INTEGER)`);(`INSERT INTO users (name, login_count) VALUES ('Amir', 1)`);(`SELECT name FROM users`);
+-- [{name: 'Amir'}]
+
+
+-- Multiple columns selected by separating column names with a comma
+(`CREATE TABLE users (name TEXT, login_count INTEGER, age INTEGER)`);
+(`INSERT INTO users (name, login_count, age) VALUES ('Amir', 1, 36)`);
+(`SELECT age, name FROM users`);
+-- [{age: 36, name: 'Amir'}]
+
+-- Selecting a column that doesn't exist results in an error
+  
+  
+(`CREATE TABLE users (name TEXT, login_count INTEGER)`);
+(`INSERT INTO users (name, login_count) VALUES ('Amir', 1)`);
+
+
+-------------------
+
+-- Inserting Multiple Rows
+
+-- Multi-row inserts reduces heavy load on the database
+
+-- insert statement written as normal, but multiple rows after VALUES
+
+(`CREATE TABLE users (name TEXT NOT NULL)`);
+(`
+  INSERT INTO users (name) VALUES
+    ('Amir'),
+    ('Betty'),
+    ('Cindy')
+`);
+(`SELECT * FROM users`);
+
+--[{name: 'Amir'}, {name: 'Betty'}, {name: 'Cindy'}]
+
+(`CREATE TABLE cats (name TEXT NOT NULL)`);
+(`INSERT INTO cats (name) VALUES ('Ms. Fluff'), ('Keanu')`);
+(`SELECT * FROM cats`);
+-- [{name: 'Ms. Fluff'}, {name: 'Keanu'}]
