@@ -2,6 +2,6 @@
 
 ---
 
-This repo is a holder and playground for my notes as I work through Execute Program.
+My notes and records of working through some of Execute Program's courses. 
 
 
