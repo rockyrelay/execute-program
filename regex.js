@@ -108,6 +108,11 @@ the syntax \x can only be followed by exactly two digits. Anything after the two
 If we write an \x with only one digit, it's no longer a character code. Instead, the \x matches literal "x" characters.
 
 Hexadecimal digits can be any character from 0-9, a-f, or A-F. If we use the wrong characters, the \x will match literal "x" again.
+
+The letter "ø" doesn't appear on an English keyboard. To match that letter, we can use its hex code \xf8.
+
 */
 
-// QUESTION / REVISION: what is ø?
+/\xf8/.test("søt katt"); // true as \xf8 is the hex code for ø.
+
+
