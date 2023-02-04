@@ -1,8 +1,9 @@
-// REGULAR EXPRESSIONS COURSE
+//-- REGULAR EXPRESSIONS COURSE --//
 
 /////////
 
-// Literals
+// LITERALS
+
 /* 
 Letters, numbers, and some other characters match themselves
 */
@@ -39,7 +40,8 @@ A | between two regexes matches either of those two regexes.
 /at|co/.test("horse"); // false
 
 
-// Basic Character Classes
+// BASIC CHARACTER CLASSES
+
 /*
 Character classes give us short names for common groups of characters.
 */
@@ -69,7 +71,7 @@ true
 Parentheses group operators together.
 */
 // Matches a, b, ab, ba, ...
-/^(a|b)+$/;
+let x = /^(a|b)+$/;
 
 /*
 A character class matches only one character in the string. If we want to match multiple characters, we can use + or *.
@@ -144,7 +146,7 @@ Writing an \x with only one digit means it's no longer a hex code, instead match
 // With "or" expressions, we can recognize a whole set of characters.
 
 // eg
-^c(a|o|u)t$/.test('cat'); 
+/^c(a|o|u)t$/.test('cat'); 
 /* 
 This gets tiresome if we need many options in the "or". Fortunately, we can use a character set to simplify it. The set [aou] is equivalent to (a|o|u).
 */
@@ -170,5 +172,9 @@ Character sets match exactly one character in the string. (This is like characte
 
 /^[a-z]$/.test('cat'); // false, because we're only looking for ONE char between a-z
 /^[a-z]+$/.test('cat'); // true, because we're looking for > ONE char between a-z
+
+/////////////////////
+
+// CHARACTER CLASSES
 
 
