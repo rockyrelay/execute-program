@@ -52,6 +52,9 @@ true
 /\d/.test('1');
 RESULT:
 true
+
+// \n represents a new line character or a line break
+
 // All character classes can be negated by upper-casing them.
 
 >
@@ -67,6 +70,12 @@ Parentheses group operators together.
 */
 // Matches a, b, ab, ba, ...
 /^(a|b)+$/;
+
+/*
+A character class matches only one character in the string. If we want to match multiple characters, we can use + or *.
+*/
+
+/^\d$/.test('1000'); // false, because there's more than 1 digit
 
 
 /////////////////////
@@ -114,5 +123,52 @@ The letter "ø" doesn't appear on an English keyboard. To match that letter, we 
 */
 
 /\xf8/.test("søt katt"); // true as \xf8 is the hex code for ø.
+
+/*
+Caution: the syntax /x can only be followed by exactly 2 digits. Anything after these will be a different part of the regex. 
+*/
+
+/\x41d/.test('A'); // false, because A(\x41) PLUS 'd'
+/\x5Ad/.test('Zd'); // true, because Z (\x5A) PLUS 'd'
+
+/*
+Writing an \x with only one digit means it's no longer a hex code, instead matching literal 'x'
+*/
+
+/\x4/.test('x4'); // true, because it's only x+4
+
+//////////////////
+
+// BASIC CHARACTER SETS
+
+// With "or" expressions, we can recognize a whole set of characters.
+
+// eg
+^c(a|o|u)t$/.test('cat'); 
+/* 
+This gets tiresome if we need many options in the "or". Fortunately, we can use a character set to simplify it. The set [aou] is equivalent to (a|o|u).
+*/
+
+/^c[aou]t$/.test('cat'); // true
+
+// We can specify an entire range of characters by using - (chars and numbers).
+
+/[a-z]/.test('g'); // true, because we're checking the range between a-z
+
+/*
+We escape special characters when we want them to be literal. This range contains only one character, an escaped ] written as \].
+
+We negate with ^, a character that we already saw. Normally it means "beginning of line". But inside [square brackets], it means "negate the character set". (There are only so many symbols on a keyboard, so some get reused.)
+*/
+
+/[^a]/.test('a'); // false, because we are NEGATING a
+/[^a]/.test('5'); // true, because we NEGATE a and it's not there
+
+/*
+Character sets match exactly one character in the string. (This is like character classes, which also match only one character.) To match more than one character, we can use + or *.
+*/
+
+/^[a-z]$/.test('cat'); // false, because we're only looking for ONE char between a-z
+/^[a-z]+$/.test('cat'); // true, because we're looking for > ONE char between a-z
 
 
