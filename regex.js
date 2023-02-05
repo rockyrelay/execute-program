@@ -177,4 +177,27 @@ Character sets match exactly one character in the string. (This is like characte
 
 // CHARACTER CLASSES
 
+/*
+We could write [A-Za-z0-9_] to mean "letters, numbers, and underscores." But that's verbose, and regexes are meant to be terse. Instead, we can use the character class \w. 
 
+The "w" in \w stands for "word", which is another name for an identifier. This can be tricky: "word" has a special meaning in programming!
+*/
+
+/\w/.test('a'); // true, because we've matched an identifier, even if only 1 char
+/\w/.test('+'); // false, because + is not an identifier
+
+/*
+underscore / _ represents a placeholder character, matching any single character except a newline
+*/
+/\w/.test('_') // true because it's representing 1 char., thus 1 word/identifier
+
+// We can match entire identifiers by combining \w with + and boundaries.
+
+let y = /^\w+$/.test('my_variable'); // true because matching a WHOLE identifier
+/^\w+$/.test('1+1'); // false, because the + is not a 'word identifier'
+
+
+// As before upper-casing the class negates it. (\W is the opposite of \w.)
+
+/\w/.test('c'); // true, because 'c' is an identifier of \w
+/\W/.test('c'); // false, because \W negates \w

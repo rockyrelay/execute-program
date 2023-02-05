@@ -82,3 +82,11 @@ A local number looks like 555-1234. A long-distance number adds an area code, li
 var re = /^\d\d\d-(\d\d\d-)?\d\d\d\d$/;
 
 ////
+
+/*
+Write a regex that matches a word character followed by a literal space.
+*/
+
+var re = /^\w $/;
+
+// starts with word, has space and ends that way
