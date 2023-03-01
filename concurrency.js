@@ -23,7 +23,7 @@ console.log('first');
 setTimeout(() => console.log('second'), 2000);
 console.log('third');
 /*
- async console output
+async console output
   19 ms  first
   20 ms  third
 2023 ms  second
@@ -34,6 +34,6 @@ arr1.push('first');
 setTimeout(() => array.push('second'), 2000);
 arr1.push('third');
 /*
- ASYNC RESULT:
+ASYNC RESULT:
 ['first', 'third', 'second']
 */

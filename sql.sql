@@ -217,3 +217,8 @@ NOT NULL
 (`INSERT INTO cats (name) VALUES ('Ms. Fluff'), ('Keanu')`);
 (`SELECT * FROM cats`);
 -- [{name: 'Ms. Fluff'}, {name: 'Keanu'}]
+
+(`CREATE TABLE cats (name TEXT NOT NULL)`);
+(`INSERT INTO cats (name) VALUES ('Ms. Fluff'), ('Keanu')`);
+(`SELECT * FROM cats`);
+-- [{name: 'Ms. Fluff'}, {name: 'Keanu'}]
