@@ -44,3 +44,16 @@ RESULT:
 [1, 2]
 
 ////
+
+// For Each //
+
+/*
+forEach loops over arrays, like a "for" loop.
+*/
+
+/* Call f once per element, passing the element
+ * to f. */
+
+// a.forEach(f);
+
+////
